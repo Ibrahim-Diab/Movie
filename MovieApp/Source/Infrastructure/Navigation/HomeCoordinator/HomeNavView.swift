@@ -11,14 +11,17 @@ import SwiftUI
 struct HomeNavView: View {
     
     @StateObject var coordinator = HomeCoordinator()
+    let factory: HomeViewModelFactoryProtocol
+
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            HomeView()
+            MoviesView(viewModel: factory.buildMoviesViewModel())
+                .environmentObject(coordinator)
                 .navigationDestination(for: HomeRoute.self) { route in
                     switch route {
-                    case .movieDetails:
-                        EmptyView()
+                    case let .movieDetails(id):
+                        MovieDetailsView(viewModel: factory.buildMovieDetailsViewModel(id: id))
                     }
                     
                 }

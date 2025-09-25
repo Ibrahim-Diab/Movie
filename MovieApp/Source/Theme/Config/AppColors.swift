@@ -14,6 +14,7 @@ enum ColorName:String{
     case secondry = "SecondryColor"
     case alert = "AlertColor"
     case grayText = "BlueGray"
+    case darkWhite = "DarkLight"
     
 }
 
@@ -47,5 +48,10 @@ final class AppColors {
     
     var grayText:Color{
         return createColor( .grayText)
+    }
+    
+    
+    var darkWhite:Color{
+        return createColor( .darkWhite)
     }
 }
