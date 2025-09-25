@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-
 struct MovieCardView: View {
     
     var movie: MovieCardViewDataSource
     weak var delegate: MovieCardViewDelegate?
+    var height:CGFloat = 170
     
     var body: some View {
           RemoteImageView(remoteURL: movie.moviePosterImage)
-            .frame(height: 170)
+            .frame(height: height)
+            .frame(width: UIScreen.main.bounds.width - 20)
             .background(Theme.colors.darkWhite)
             .cornerRadius(30)
             .clipped()
@@ -25,11 +26,10 @@ struct MovieCardView: View {
                         Text(movie.movieTitle)
                             .textStyle(font: .system(size: 14,weight: .bold), color: .white)
                         Text(movie.movieReleaseDate)
-                            .textStyle(font: .system(size: 12,weight: .semibold), color: .gray)
+                            .textStyle(font: .system(size: 12,weight: .semibold), color: Theme.colors.secondry)
                     }
                     Spacer()
                 }
-                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Theme.colors.primary.opacity(0.50))
                 .cornerRadius(30)

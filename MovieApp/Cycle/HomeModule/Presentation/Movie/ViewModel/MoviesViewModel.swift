@@ -14,6 +14,7 @@ class MoviesViewModel: BaseViewModel {
     
     @Published  var movies: [MovieCardViewDataSource] = []
     @Published var movieListTypes:[SegmentButtonModel] = []
+    @Published var isHorizontal: Bool = true
     private var currentPage: Int = 1
     private(set) var totalPages: Int = 1
     private var isFetching: Bool = false
